@@ -1,0 +1,1 @@
+{"mappings":"AAAAA,QAAU","sources":["src/index.js"],"sourcesContent":["API_KEY = '220ce7017a970ee5aafe37264f861af2';\n\n// EXAMPLE_API_REQUEST = https://api.themoviedb.org/3/movie/550?api_key=220ce7017a970ee5aafe37264f861af2;\n"],"names":["API_KEY"],"version":3,"file":"index.97d6d545.js.map"}
