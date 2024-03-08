@@ -4,7 +4,8 @@
   "description": "",
   "homepage": "https://RoksanaKor.github.io/goit-js-group-03",
   "scripts": {
-    "dev": "parcel src/*.html",
+    "library": "parcel src/my-library.html",
+    "dev": "parcel src/home.html",
     "build": "parcel build src/*.html --public-url /goit-js-group-03/"
   },
   "repository": {
