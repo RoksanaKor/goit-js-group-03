@@ -1,0 +1,148 @@
+/* mobile */
+@media (max-width: 768px) {
+    .home-header-container {
+        background-color: brown;
+        height: 230px;
+    }
+
+    .home-header-nav {
+        padding: 42px 20px 56px 22px;
+    }
+
+    .home-header-logo-link {
+        text-align: center;
+    }
+
+    .home-header-logo-par {
+        display: none;
+    }
+
+    .search-input {
+        width: 280px;
+        height: 20px;
+    }
+
+    .errorDisplay {
+        margin-top: 16px;
+    }
+}
+
+/* tablet */
+@media (min-width: 768px) and (max-width: 1280px) {
+    .home-header-container {
+        background-color: aqua;
+        height: 216px;
+    }
+
+    .search-input {
+        width: 336px;
+        height: 20px;
+    }
+}
+
+/* desktop */
+@media (min-width: 1280px) {
+    .home-header-container {
+        background-color: blue;
+        height: 216px;
+    }
+
+    .search-input {
+        width: 394px;
+        height: 20px;
+    }
+}
+
+/* ogólne */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.home-header-navlist-link {
+    text-decoration: none;
+}
+
+.home-header-navlist {
+    list-style: none;
+    gap: 40px;
+}
+
+.home-header-logo-wrapper {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    font-family: Roboto;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 35px;
+    letter-spacing: 0%;
+    justify-content: space-between;
+}
+
+.home-header-navlist {
+    display: flex;
+}
+
+.home-header-navlist-link {
+    color: rgb(255, 255, 255);
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+}
+
+.home-header-nav {
+    padding: 40px 32px 40px 31px;
+}
+
+.home-header-nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-form {
+    display: flex;
+    justify-content: center;
+}
+
+.search-input {
+    color: rgb(255, 255, 255);
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0%;
+    text-align: left;
+    border: none;
+    border-bottom: 0.5px solid rgb(255, 255, 255);
+    background-color: transparent;
+}
+
+.errorDisplay {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    color: rgb(255, 0, 27);
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0%;
+    text-align: center;
+}
+
+.home-header-container {
+    background-image: url(../images/header-images/abstract-background-with-red-lines-2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* .submit-btn-logo-svg {
+    background: transparent;
+} */
