@@ -1,21 +1,32 @@
-<header class="container">
-  <div class="header-logo">
-    <svg></svg>
-    <p>Filmoteka</p>
-  </div>
-  <a href="./index.html" rel="noreferrer noopener">HOME</a>
-  <a href="./library.html" rel="noreferrer noopener">MY LIBRARY</a>
-  <div>
+<header class="container home-header-container">
+  <nav class="home-header-nav">
+    <div class="home-header-nav-wrapper">
+      <div class="home-header-logo-wrapper">
+        <a class="home-header-logo-link" href="./index.html">
+          <svg class="home-header-logo-svg" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+            <use href="./images/header-images/icons.svg#icons-film">
+            </use>
+          </svg>
+        </a>
+        <p class="home-header-logo-par">Filmoteka</p>
+      </div>
+      <ul class="home-header-navlist">
+        <li><a class="home-header-navlist-link bar-transition" href="./index.html">Home</a></li>
+        <li><a class="home-header-navlist-link" href="./library.html">My library</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="search-form-wrapper">
     <form class="search-form" id="search-form">
-      <input
-        class="search-input"
-        type="text"
-        name="searchQuery"
-        autocomplete="off"
-        placeholder="Movie search"
-      />
-      <button title="form-submit" class="submit-btn" type="submit"></button>
+      <input class="search-input" type="text" name="searchQuery" autocomplete="off" placeholder="Movie search" />
+      <button title="form-submit" class="submit-btn" type="submit">
+        <svg class="submit-btn-logo-svg" width="12" height="12" xmlns="http://www.w3.org/2000/svg">
+          <use href="./images/header-images/icons.svg#icons-search-2">
+          </use>
+        </svg>
+      </button>
     </form>
-    <p class="errorDisplay">Search result not successful. Enter the correct movie name and</p>
   </div>
+  <p class="errorDisplay">Search result not successful. Enter the correct movie name and</p>
 </header>
+
