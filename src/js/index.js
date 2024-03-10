@@ -8,3 +8,4 @@ import {} from './search.js';
 import {} from './trending.js';
 import {} from './modal.js';
 import {} from './goit-modal.js';
+import {} from './goit-modal-gallery.js'
