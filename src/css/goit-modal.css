@@ -4,6 +4,12 @@
   padding: 0;
 }
 
+.background-section {
+  background: red;
+  width: 100%;
+  height: 1000px;
+}
+
 .images {
   display: block;
   max-width: 100%;
@@ -18,13 +24,6 @@ body {
 
 .link {
   text-decoration: none;
-}
-
-ul,
-ol {
-  list-style: none;
-  margin: 0;
-  padding-left: 0;
 }
 
 .list {
@@ -54,27 +53,27 @@ ol {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    background-color: rgb(255, 255, 255);
+    padding-left: 20px;
     width: 280px;
     height: 940px;
-    background-color: rgb(255, 255, 255);
   }
 
-  .backdrop {
+  .close-modal-icon {
     width: 14px;
     height: 14px;
     position: absolute;
-    top: 16px;
-    right: 16px;
+    left: 250px;
+    top: 30px;
     cursor: pointer;
-    opacity: 0.7;
   }
 
-  .backdrop:hover {
+  .close-modal-icon:hover {
     opacity: 1;
   }
 
-  .backdrop:before,
-  .backdrop:after {
+  .close-modal-icon:before,
+  .close-modal-icon:after {
     position: absolute;
     left: 5px;
     content: ' ';
@@ -83,43 +82,14 @@ ol {
     background-color: #000;
   }
 
-  #movie-card {
-    height: auto;
-    width: auto;
-    border-radius: 5px;
-  }
-
-  #content {
-    display: flex;
-    align-items: start;
-    width: 100%;
-  }
-
-  .left-descr-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 16px;
-    color: #8c8c8c;
-    margin-bottom: 8px;
-  }
-
-  .img-posters {
-    position: relative;
-    transition: 0.4s;
-  }
-
-  .trailer-btn {
+  .trailer-button {
     position: absolute;
     font-size: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 375px;
-    height: 478px;
+    width: 240px;
+    height: 357px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -129,25 +99,36 @@ ol {
     cursor: pointer;
   }
 
-  .left-descr-content:last-child {
-    margin-bottom: 0;
+  .film-title {
+    color: rgb(0, 0, 0);
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 23px;
+    letter-spacing: 0%;
+    text-align: left;
+    margin-bottom: 20px;
   }
 
-  .about-wrapper {
+  #description {
+    margin-bottom: 20px;
+  }
+
+  #movie-card {
+    overflow: hidden;
+  }
+
+  #content {
     display: flex;
     flex-direction: column;
-    font-size: 12px;
+    max-height: 460px;
+    overflow-y: scroll;
+    width: 280px;
+    margin: 0;
   }
 
-  span {
-    font-weight: 500;
-    line-height: 16px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-
-  #left-content {
-    height: auto;
+  #content::-webkit-scrollbar {
+    width: 5px;
   }
 
   #right-content {
@@ -159,21 +140,41 @@ ol {
     font-size: 16px;
     line-height: 1.5;
     text-align: justify;
+    margin-top: 20px;
     margin-right: 12px;
     margin-left: 16px;
   }
 
-  #film-title {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 30px;
-    line-height: 35px;
-    margin-bottom: 20px;
+  #left-content {
+    width: 240px;
+    height: 357px;
   }
 
-  #description {
-    margin-bottom: 20px;
+  #left-content,
+  #right-content {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .film-image-window {
+    position: relative;
+    transition: 0.4s;
+  }
+
+  .button-wrapper {
+    display: flex;
+  }
+
+  .left-descr-content {
+    color: rgb(140, 140, 140);
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0%;
+    text-align: left;
+    margin-bottom: 8px;
   }
 
   #votes,
@@ -183,35 +184,72 @@ ol {
     color: black;
   }
 
+  .text-about {
+    display: flex;
+    flex-direction: column;
+    color: rgb(0, 0, 0);
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0%;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
   #about {
-    margin-bottom: 20px;
+    color: rgb(0, 0, 0);
+    font-family: Roboto;
+    font-size: 12px;
     font-weight: 500;
     line-height: 20px;
+    letter-spacing: 0%;
+    text-align: left;
+    margin-bottom: 20px;
   }
 
-  .btn_wrapper {
-    display: flex;
-  }
-
-  .add-to-watched-btn {
-    background-color: rgb(255, 107, 1);
-    width: 136px;
-    height: 44px;
-  }
-
-  .add-to-queue-btn {
-    background-color: rgb(255, 255, 255);
-    width: 136px;
-    height: 44px;
-  }
-
-  .add-to-watched-btn,
-  .add-to-queue-btn {
-    border-radius: 5px;
-    font-weight: 500;
+  span {
+    color: rgb(0, 0, 0);
+    font-family: Roboto;
     font-size: 12px;
-    line-height: 1.3;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0%;
+    text-align: left;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .watched-button {
+    background-color: rgb(255, 107, 1);
+    width: 110px;
+    height: 44px;
+    border-radius: 5px;
+    border: none;
+    color: rgb(255, 255, 255);
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0%;
     text-align: center;
+    text-transform: uppercase;
+    gap: 20px;
+  }
+
+  .queue-button {
+    background-color: rgb(255, 255, 255);
+    width: 110px;
+    height: 44px;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
   }
 }
 
@@ -223,27 +261,27 @@ ol {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    background-color: rgb(255, 255, 255);
+    padding-left: 20px;
     width: 704px;
     height: 552px;
-    background-color: rgb(255, 255, 255);
   }
 
-  .backdrop {
+  .close-modal-icon {
     width: 14px;
     height: 14px;
     position: absolute;
-    top: 16px;
-    right: 16px;
+    left: 650px;
+    top: 22px;
     cursor: pointer;
-    opacity: 0.7;
   }
 
-  .backdrop:hover {
+  .close-modal-icon:hover {
     opacity: 1;
   }
 
-  .backdrop:before,
-  .backdrop:after {
+  .close-modal-icon:before,
+  .close-modal-icon:after {
     position: absolute;
     left: 5px;
     content: ' ';
@@ -252,43 +290,14 @@ ol {
     background-color: #000;
   }
 
-  #movie-card {
-    height: auto;
-    width: auto;
-    border-radius: 5px;
-  }
-
-  #content {
-    display: flex;
-    align-items: start;
-    width: 100%;
-  }
-
-  .left-descr-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 16px;
-    color: #8c8c8c;
-    margin-bottom: 8px;
-  }
-
-  .img-posters {
-    position: relative;
-    transition: 0.4s;
-  }
-
-  .trailer-btn {
+  .trailer-button {
     position: absolute;
     font-size: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 375px;
-    height: 478px;
+    width: 264px;
+    height: 373.55px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -298,25 +307,37 @@ ol {
     cursor: pointer;
   }
 
-  .left-descr-content:last-child {
-    margin-bottom: 0;
-  }
-
-  .about-wrapper {
-    display: flex;
-    flex-direction: column;
+  .film-title {
+    color: rgb(0, 0, 0);
+    font-family: Roboto;
     font-size: 12px;
-  }
-
-  span {
     font-weight: 500;
     line-height: 16px;
+    letter-spacing: 0%;
+    text-align: left;
     text-transform: uppercase;
-    margin-bottom: 8px;
+    margin-bottom: 20px;
   }
 
-  #left-content {
-    height: auto;
+  #description {
+    margin-bottom: 20px;
+  }
+
+  #movie-card {
+    overflow: hidden;
+  }
+
+  #content {
+    display: flex;
+    flex-direction: row;
+    max-height: 552px;
+    overflow-y: scroll;
+    width: 704px;
+    margin: 0;
+  }
+
+  #content::-webkit-scrollbar {
+    width: 5px;
   }
 
   #right-content {
@@ -328,21 +349,40 @@ ol {
     font-size: 16px;
     line-height: 1.5;
     text-align: justify;
+    margin-top: 20px;
     margin-right: 12px;
-    margin-left: 16px;
+    margin-left: 60px;
   }
 
-  #film-title {
-    font-family: 'Roboto';
-    font-style: normal;
+  #left-content {
+    width: 264px;
+    height: 373.55px;
+  }
+
+  #left-content,
+  #right-content {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .film-image-window {
+    position: relative;
+    transition: 0.4s;
+  }
+
+  .button-wrapper {
+    display: flex;
+  }
+
+  .left-descr-content {
+    color: rgb(140, 140, 140);
+    font-family: Roboto;
+    font-size: 12px;
     font-weight: 500;
-    font-size: 30px;
-    line-height: 35px;
-    margin-bottom: 20px;
-  }
-
-  #description {
-    margin-bottom: 20px;
+    line-height: 16px;
+    letter-spacing: 0%;
+    text-align: left;
   }
 
   #votes,
@@ -352,35 +392,72 @@ ol {
     color: black;
   }
 
+  .text-about {
+    display: flex;
+    flex-direction: column;
+    color: rgb(0, 0, 0);
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0%;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
   #about {
-    margin-bottom: 20px;
+    color: rgb(0, 0, 0);
+    font-family: Roboto;
+    font-size: 12px;
     font-weight: 500;
     line-height: 20px;
+    letter-spacing: 0%;
+    text-align: left;
+    margin-bottom: 20px;
   }
 
-  .btn_wrapper {
-    display: flex;
-  }
-
-  .add-to-watched-btn {
-    background-color: rgb(255, 107, 1);
-    width: 136px;
-    height: 44px;
-  }
-
-  .add-to-queue-btn {
-    background-color: rgb(255, 255, 255);
-    width: 136px;
-    height: 44px;
-  }
-
-  .add-to-watched-btn,
-  .add-to-queue-btn {
-    border-radius: 5px;
-    font-weight: 500;
+  span {
+    color: rgb(0, 0, 0);
+    font-family: Roboto;
     font-size: 12px;
-    line-height: 1.3;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0%;
+    text-align: left;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .watched-button {
+    background-color: rgb(255, 107, 1);
+    width: 125.03px;
+    height: 44px;
+    border-radius: 5px;
+    border: none;
+    color: rgb(255, 255, 255);
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0%;
     text-align: center;
+    text-transform: uppercase;
+    gap: 20px;
+  }
+
+  .queue-button {
+    background-color: rgb(255, 255, 255);
+    width: 125.03px;
+    height: 44px;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
   }
 }
 
@@ -392,27 +469,27 @@ ol {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    background-color: rgb(255, 255, 255);
+    padding-left: 12px;
     width: 806px;
     height: 558px;
-    background-color: rgb(255, 255, 255);
   }
 
-  .backdrop {
+  .close-modal-icon {
     width: 14px;
     height: 14px;
     position: absolute;
-    top: 16px;
-    right: 16px;
+    left: 750px;
+    top: 22px;
     cursor: pointer;
-    opacity: 0.7;
   }
 
-  .backdrop:hover {
+  .close-modal-icon:hover {
     opacity: 1;
   }
 
-  .backdrop:before,
-  .backdrop:after {
+  .close-modal-icon:before,
+  .close-modal-icon:after {
     position: absolute;
     left: 5px;
     content: ' ';
@@ -421,36 +498,7 @@ ol {
     background-color: #000;
   }
 
-  #movie-card {
-    height: auto;
-    width: auto;
-    border-radius: 5px;
-  }
-
-  #content {
-    display: flex;
-    align-items: start;
-    width: 100%;
-  }
-
-  .left-descr-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 16px;
-    color: #8c8c8c;
-    margin-bottom: 8px;
-  }
-
-  .img-posters {
-    position: relative;
-    transition: 0.4s;
-  }
-
-  .trailer-btn {
+  .trailer-button {
     position: absolute;
     font-size: 100px;
     display: flex;
@@ -467,25 +515,39 @@ ol {
     cursor: pointer;
   }
 
-  .left-descr-content:last-child {
-    margin-bottom: 0;
-  }
-
-  .about-wrapper {
-    display: flex;
-    flex-direction: column;
+  .film-title {
+    color: rgb(0, 0, 0);
+    font-family: Roboto;
     font-size: 12px;
-  }
-
-  span {
     font-weight: 500;
     line-height: 16px;
+    letter-spacing: 0%;
+    text-align: left;
     text-transform: uppercase;
-    margin-bottom: 8px;
+    width: 266px;
+    height: 31px;
+    margin-bottom: 20px;
   }
 
-  #left-content {
-    height: auto;
+  #description {
+    margin-bottom: 20px;
+  }
+
+  #movie-card {
+    overflow: hidden;
+  }
+
+  #content {
+    display: flex;
+    flex-direction: row;
+    max-height: 558px;
+    overflow-y: scroll;
+    width: 806px;
+    margin: 0;
+  }
+
+  #content::-webkit-scrollbar {
+    width: 5px;
   }
 
   #right-content {
@@ -497,21 +559,41 @@ ol {
     font-size: 16px;
     line-height: 1.5;
     text-align: justify;
+    margin-top: 20px;
     margin-right: 12px;
-    margin-left: 16px;
+    margin-left: 60px;
+    width: 391px;
   }
 
-  #film-title {
-    font-family: 'Roboto';
-    font-style: normal;
+  #left-content {
+    width: 375px;
+    height: 478px;
+  }
+
+  #left-content,
+  #right-content {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .film-image-window {
+    position: relative;
+    transition: 0.4s;
+  }
+
+  .button-wrapper {
+    display: flex;
+  }
+
+  .left-descr-content {
+    color: rgb(140, 140, 140);
+    font-family: Roboto;
+    font-size: 12px;
     font-weight: 500;
-    font-size: 30px;
-    line-height: 35px;
-    margin-bottom: 20px;
-  }
-
-  #description {
-    margin-bottom: 20px;
+    line-height: 16px;
+    letter-spacing: 0%;
+    text-align: left;
   }
 
   #votes,
@@ -521,34 +603,71 @@ ol {
     color: black;
   }
 
+  .text-about {
+    display: flex;
+    flex-direction: column;
+    color: rgb(0, 0, 0);
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0%;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
   #about {
-    margin-bottom: 20px;
+    color: rgb(0, 0, 0);
+    font-family: Roboto;
+    font-size: 12px;
     font-weight: 500;
     line-height: 20px;
+    letter-spacing: 0%;
+    text-align: left;
+    margin-bottom: 20px;
   }
 
-  .btn_wrapper {
-    display: flex;
+  span {
+    color: rgb(0, 0, 0);
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0%;
+    text-align: left;
+    text-transform: uppercase;
+    margin-bottom: 8px;
   }
 
-  .add-to-watched-btn {
+  .watched-button {
     background-color: rgb(255, 107, 1);
     width: 136px;
     height: 44px;
+    border-radius: 5px;
+    border: none;
+    color: rgb(255, 255, 255);
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+    gap: 20px;
   }
 
-  .add-to-queue-btn {
+  .queue-button {
     background-color: rgb(255, 255, 255);
     width: 136px;
     height: 44px;
-  }
-
-  .add-to-watched-btn,
-  .add-to-queue-btn {
     border-radius: 5px;
-    font-weight: 500;
+    color: rgb(0, 0, 0);
+    font-family: Roboto;
     font-size: 12px;
-    line-height: 1.3;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0%;
     text-align: center;
+    text-transform: uppercase;
   }
 }

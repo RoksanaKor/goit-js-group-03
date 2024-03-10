@@ -1,14 +1,14 @@
 <button type="button" class="button-order-service" data-modal-open>OKNO MODALNE</button>
 
-<div class="data-modal-backdrop is-hidden" data-modal>
+<section class="data-modal-backdrop is-hidden" data-modal>
   <div class="modal-box">
     <div id="modal">
-      <button id="close-modal" class="backdrop" type="button" data-modal-close>X</button>
+      <button id="close-modal" class="close-modal-icon" type="button" data-modal-close>X</button>
       <div id="movie-card">
         <div id="content">
-          <div id="left-content" class="img-posters">
+          <div id="left-content" class="film-image-window">
             <div id="film-img" alt="Film Image">
-              <button class="trailer-btn" id="film-id" type="button">IMG</button>
+              <button class="trailer-button" id="film-id" type="button">IMG</button>
             </div>
           </div>
           <div id="right-content">
@@ -31,17 +31,17 @@
                 <div id="genre"></div>
               </div>
             </div>
-            <div class="about-wrapper">
+            <div class="text-about">
               <span>About</span>
               <div id="about"></div>
             </div>
 
-            <div class="btn_wrapper" id="buttonWrapper">
-              <button type="button" class="add-to-watched-btn" id="btn" data-value="add">
+            <div class="button-wrapper" id="buttonWrapper">
+              <button type="button" class="watched-button" id="btn" data-value="add">
                 ADD TO WATCHED
               </button>
 
-              <button type="button" class="add-to-queue-btn" id="btn" data-value="add">
+              <button type="button" class="queue-button" id="btn" data-value="add">
                 ADD TO QUEUE
               </button>
             </div>
@@ -50,6 +50,6 @@
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <script src="./js/modal.js"></script>
