@@ -109,8 +109,6 @@ ol {
     border: none;
     color: #f2936d;
     cursor: pointer;
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
-      color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .btn_wrapper {
@@ -144,12 +142,11 @@ ol {
 @media screen and (min-width: 481px) and (max-width: 768px) {
   .modal-box {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 704px;
     height: 552px;
-    left: 32px;
-    right: -32px;
-    top: 219px;
-    bottom: -219px;
     background-color: rgb(255, 255, 255);
   }
 
@@ -227,8 +224,6 @@ ol {
     border: none;
     color: #f2936d;
     cursor: pointer;
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
-      color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   #left-content {
@@ -267,14 +262,12 @@ ol {
 @media screen and (min-width: 769px) {
   .modal-box {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 806px;
     height: 558px;
-    left: 237px;
-    right: -237px;
-    top: 150px;
-    bottom: -150px;
     background-color: rgb(255, 255, 255);
-    padding: 40px 12px 40px 12px;
   }
 
   .backdrop {
@@ -345,8 +338,6 @@ ol {
     border: none;
     color: #f2936d;
     cursor: pointer;
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
-      color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .left-descr-content:last-child {
