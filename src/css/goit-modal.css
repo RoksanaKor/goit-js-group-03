@@ -4,12 +4,6 @@
   padding: 0;
 }
 
-.background-section {
-  background: red;
-  width: 100%;
-  height: 500px;
-}
-
 .images {
   display: block;
   max-width: 100%;
