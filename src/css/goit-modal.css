@@ -54,7 +54,7 @@ ol {
 }
 
 /* ------------------------------------------------- MOBILE ---------------------------------------------------------*/
-@media screen and (min-width: 320px) and (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .modal-box {
     position: absolute;
     top: 50%;
