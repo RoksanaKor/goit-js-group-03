@@ -2,10 +2,14 @@
   <nav class="home-header-nav">
     <div class="home-header-nav-wrapper">
       <div class="home-header-logo-wrapper">
-        <a class="home-header-logo-link" href="./index.html">
-          <svg class="home-header-logo-svg" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
-            <use href="./images/header-images/icons.svg#icons-film">
-            </use>
+        <a title="logo" class="home-header-logo-link" href="./index.html">
+          <svg
+            class="home-header-logo-svg"
+            width="24"
+            height="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <use href="./images/header-images/icons.svg#icons-film"></use>
           </svg>
         </a>
         <p class="home-header-logo-par">Filmoteka</p>
@@ -18,17 +22,25 @@
   </nav>
   <div class="search-form-wrapper">
     <form class="search-form" id="search-form">
-      <input class="search-input" type="text" name="searchQuery" autocomplete="off" placeholder="Movie search" required />
+      <input
+        class="search-input"
+        type="text"
+        name="searchQuery"
+        autocomplete="off"
+        placeholder="Movie search"
+        required
+      />
       <button title="form-submit" class="submit-btn" type="submit">
         <svg class="submit-btn-logo-svg" width="12" height="12" xmlns="http://www.w3.org/2000/svg">
-          <use href="./images/header-images/icons.svg#icons-search-2">
-          </use>
+          <use href="./images/header-images/icons.svg#icons-search-2"></use>
         </svg>
       </button>
     </form>
   </div>
   <div class="errorDisplay-wrapper">
-  <p class="errorDisplay hidden">Search result not successful. Enter the correct movie name and</p> <!--paragraf ukryty css, należy dodać funckję js, która zdejmie klasę hidden, po spełnieniu warunku-->
+    <p class="errorDisplay hidden">
+      Search result not successful. Enter the correct movie name and
+    </p>
+    <!--paragraf ukryty css, należy dodać funckję js, która zdejmie klasę hidden, po spełnieniu warunku-->
   </div>
 </header>
-
