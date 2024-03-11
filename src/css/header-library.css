@@ -36,7 +36,6 @@
         top: 124px;
         left: 21px;
         border-radius: 5px;       
-        background: #FFFFFF;
         border: 1px solid #FFFFFF;
     }
 
@@ -46,7 +45,6 @@
         top: 124px;
         left: 21px;
         border-radius: 5px;       
-        background: #FFFFFF;
         border: 1px solid #FFFFFF;
     }
 
@@ -78,7 +76,6 @@
         top: 115px;
         left: 216px;
         border-radius: 5px;
-        background: rgba(255, 255, 255, 1);
         border: 1px solid rgba(255, 255, 255, 1);
     }
 
@@ -88,7 +85,6 @@
             top: 115px;
             left: 216px;
             border-radius: 5px;
-            background: rgba(255, 255, 255, 1);
             border: 1px solid rgba(255, 255, 255, 1);
         }
 }
@@ -118,7 +114,6 @@
             top: 114px;
             left: 484px;
             border-radius: 5px;
-            background: rgba(255, 255, 255, 1);
             border: 1px solid rgba(255, 255, 255, 1)
     }
    
@@ -128,7 +123,6 @@
             top: 114px;
             left: 484px;
             border-radius: 5px;
-            background: rgba(255, 255, 255, 1);
             border: 1px solid rgba(255, 255, 255, 1)
         }
 
@@ -188,14 +182,47 @@
     justify-content: space-between;
 }
 
+.library-btn-div {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.library-btn-watched {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+    background: rgba(0, 0, 0, 0.56);
+}
+
+.library-btn-queue {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+    background: rgba(0, 0, 0, 0.56);
+}
+
 .library-btn-watched:hover,
 .library-btn-watched:focus {
+    background: rgba(255, 107, 1, 1);
     box-shadow: 0px 8px 43px 0px rgba(255, 107, 1, 0.6);
+    border: 1px solid rgba(255, 107, 1, 1);
 }
 
 .library-btn-queue:hover,
 .library-btn-queue:focus {
+    border: 1px solid rgba(255, 107, 1, 1);
+    background: rgba(255, 107, 1, 1);
     box-shadow: 0px 8px 43px 0px rgba(255, 107, 1, 0.6);
+
 }
 
 
