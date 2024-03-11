@@ -190,7 +190,7 @@
 }
 
 .submit-btn {
-    background: transparent;
+    background-color: transparent;
     border: none;
     position: relative;
     right: 12px;
@@ -199,9 +199,9 @@
     z-index: 1;
 }
 
-/* .hidden {
+.hidden {
     opacity: 0;
-} */
+}
 
 .bar-transition {
         position: relative;
