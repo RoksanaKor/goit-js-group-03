@@ -1,12 +1,23 @@
-<header class="container">
-  <div class="header-logo">
-    <svg></svg>
-    <p>Filmoteka</p>
+<header class="container library-header-container">
+  <nav class="library-header-nav">
+    <div class="library-header-nav-wrapper">
+      <div class="library-header-logo-wrapper">
+        <a class="library-header-logo-link" href="./library.html">
+          <svg class="home-header-logo-svg" width="24" height="24">
+            <use href="./images/header-images/icons.svg#icons-film">
+            </use>
+          </svg>
+        </a>
+        <p class="library-header-logo-par">Filmoteka</p>
   </div>
-  <a href="./index.html" rel="noreferrer noopener">HOME</a>
-  <a href="./library.html" rel="noreferrer noopener">MY LIBRARY</a>
-  <div>
-    <button title="watched" type="button" class="library-btn">WATCHED</button>
-    <button title="queue" type="button" class="library-btn">QUEUE</button>
+  <ul class="library-header-navlist">
+  <li><a class="library-header-navlist-link" href="./index.html" rel="noreferrer noopener">HOME</a></li>
+  <li><a class="library-header-navlist-link bar-transition" href="./library.html" rel="noreferrer noopener">MY LIBRARY</a></li>
+  </ul>
+    </div>
+  </nav>
+  <div class="library-btn-div">
+    <button title="watched" type="button" class="library-btn-watched">WATCHED</button>
+    <button title="queue" type="button" class="library-btn-queue">QUEUE</button>
   </div>
 </header>
