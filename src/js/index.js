@@ -3,8 +3,8 @@
 
 API_KEY = '220ce7017a970ee5aafe37264f861af2';
 
-import {} from './full-info.js';
 import {} from './search.js';
 import {} from './trending.js';
-import {} from './modal.js';
+import {} from './movie-modal.js';
 import {} from './goit-modal.js';
+import {} from './goit-modal-gallery.js';

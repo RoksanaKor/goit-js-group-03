@@ -1,0 +1,84 @@
+<button type="button" class="button-order-service" data-modal-open>OKNO MODALNE</button>
+
+<section class="data-modal-backdrop is-hidden" data-modal>
+  <div class="modal-box">
+    <div id="modal">
+      <button id="close-modal" class="close-modal-icon" type="button" data-modal-close>
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18 6L6 18"
+            stroke="#111111"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M6 6L18 18"
+            stroke="#111111"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+      <div id="movie-card">
+        <div id="content">
+          <div id="left-content" class="film-image-window">
+            <div id="film-img" alt="Film Image">
+              <button title="trailer-btn" class="trailer-button" id="film-id" type="button">
+                IMG
+              </button>
+            </div>
+          </div>
+          <div id="right-content">
+            <h2 id="film-title"></h2>
+            <div id="description" class="modal-description">
+              <div class="left-descr-content">
+                Votes
+                <div id="votes"></div>
+              </div>
+              <div class="left-descr-content">
+                Popularity
+                <div id="popul"></div>
+              </div>
+              <div class="left-descr-content">
+                Original title
+                <div id="origTitle"></div>
+              </div>
+              <div class="left-descr-content">
+                Genre
+                <div id="genre"></div>
+              </div>
+            </div>
+            <div class="text-about">
+              <span>About</span>
+              <div id="about"></div>
+            </div>
+
+            <div class="button-wrapper" id="buttonWrapper">
+              <button
+                title="watched-btn"
+                type="button"
+                class="watched-button"
+                id="watched-btn"
+                data-value="add"
+              >
+                ADD TO WATCHED
+              </button>
+
+              <button type="button" class="queue-button" id="queue-btn" data-value="add">
+                ADD TO QUEUE
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
