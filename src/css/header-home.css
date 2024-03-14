@@ -122,8 +122,8 @@
     gap: 40px;
 }
 
-.home-header-logo-wrapper {
-    display: flex;
+.home-header-logo-wrapper .home-header-logo-par{
+    display: inline;
     gap: 10px;
     align-items: center;
     color: rgb(255, 255, 255);
