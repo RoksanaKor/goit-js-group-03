@@ -53,6 +53,11 @@
 
 /* paginacja */
 
+.arrow-icon {
+  max-height: 100%;
+  max-width: 100%;
+}
+
 .pagination-pages,
 .pagination-container {
   display: flex;
@@ -80,6 +85,12 @@
 .pagination-page-button:active {
   background-color: #ff6b08;
   color: #fff;
+}
+
+.pagination-page-button.left,
+.pagination-page-button.right {
+  border-radius: 5px;
+  background: rgb(247, 247, 247);
 }
 
 .pagination-page-button.left:hover,
