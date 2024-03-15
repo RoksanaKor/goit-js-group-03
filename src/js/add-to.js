@@ -18,8 +18,6 @@ const saveData = movieData => {
   }
 };
 
-// const throttleSave = _.throttle(saveData, 500);
-
 try {
   const stringedData = JSON.stringify(movieData);
   localStorage.setItem('data-movies', stringedData);
@@ -37,7 +35,6 @@ function onClickWatched() {
     Notiflix.Notify.failure('You already added this movie to watchlist');
   }
   saveData(movieData);
-  console.log(movieData);
 }
 
 function onClickQueue() {
@@ -47,5 +44,4 @@ function onClickQueue() {
     Notiflix.Notify.failure('You already added this movie to queue');
   }
   saveData(movieData);
-  console.log(movieData);
 }
