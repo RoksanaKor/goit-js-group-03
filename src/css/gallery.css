@@ -28,6 +28,10 @@
     padding: 20px;
     width: 320px;
   }
+
+  .empty-button {
+    display: none;
+  }
 }
 
 /* tablet */
@@ -54,8 +58,8 @@
 /* paginacja */
 
 .arrow-icon {
-  max-height: 100%;
-  max-width: 100%;
+  height: 16px;
+  width: 16px;
 }
 
 .pagination-pages,
@@ -65,19 +69,31 @@
   margin-bottom: 60px;
 }
 
-.pagination-page-button {
+.pagination-slider-buttons-container {
+  display: flex;
+}
+
+.pagination-page-button,
+.empty-button {
+  margin-left: 5px;
+  margin-right: 5px;
   align-items: center;
   background-color: transparent;
   border: none;
   border-radius: 5px;
   color: inherit;
   cursor: pointer;
-  display: flex;
+  /* display: flex; */
   height: 40px;
   justify-content: center;
   opacity: 100%;
   text-decoration: none;
   width: 40px;
+  transition: transform 0.5s ease;
+}
+
+.empty-button {
+  cursor:auto;
 }
 
 .pagination-page-button:hover,
@@ -85,6 +101,7 @@
 .pagination-page-button:active {
   background-color: #ff6b08;
   color: #fff;
+  transform: scale(1.25);
 }
 
 .pagination-page-button.left,
