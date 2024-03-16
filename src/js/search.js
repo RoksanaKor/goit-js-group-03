@@ -192,6 +192,6 @@ function renderPaginationButtons() {
 async function scrollToTop() {
   await window.scrollTo({
     top: 0,
-    behavior: 'smooth' // Użyj 'smooth', aby przewijanie było płynne
+    behavior: 'auto' 
   });
 }
