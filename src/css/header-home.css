@@ -25,7 +25,7 @@
         text-align: center;
     }
 
-    .home-header-logo-par {
+    .home-header-logo-span {
         display: none;
     }
 
@@ -122,7 +122,7 @@
     gap: 40px;
 }
 
-.home-header-logo-wrapper .home-header-logo-par{
+.home-header-logo-par {
     display: inline;
     gap: 10px;
     align-items: center;
@@ -133,6 +133,19 @@
     line-height: 35px;
     letter-spacing: 0%;
     justify-content: space-between;
+}
+
+.home-header-logo-span {
+    padding-left: 10px;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    font-family: Roboto;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 35px;
+    letter-spacing: 0%;
+    justify-content: space-between;
+    text-transform: capitalize;
 }
 
 .home-header-navlist {
@@ -157,6 +170,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.home-header-logo-link {
+    text-decoration: none;
 }
 
 .search-form {
@@ -216,4 +233,17 @@
         height: 3px;
         width: 100%;
         background-color: rgb(255, 0, 27);;
+}
+
+.home-header-logo-span:hover,
+.home-header-logo-span:focus,
+.home-header-logo-svg:hover,
+.home-header-logo-svg:focus,
+.home-header-navlist-link:hover,
+.home-header-navlist-link:focus,
+.submit-btn-logo-svg:hover,
+.submit-btn-logo-svg:focus {
+    transform: translateY(0%);
+    transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    color: rgba(255, 107, 1);
 }
