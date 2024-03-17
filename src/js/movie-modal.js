@@ -52,3 +52,30 @@
     document.removeEventListener('click', closeOnClickOutside);
   }
 })();
+//kod pisany przez: Kamila Walkowska
+// Obsługa zdarzenia kliknięcia na miniaturze filmu
+document.querySelectorAll('[data-modal-open]').forEach(item => {
+  item.addEventListener('click', event => {
+      const movieId = item.dataset.movieId; // Pobierz identyfikator filmu
+
+      // Wykonaj zapytanie do API TMDb, aby pobrać szczegóły filmu
+      axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=50161d05178dfdcf85b00929de7fbb36&language=en-US`)
+          .then(response => {
+              const movieData = response.data;
+
+              // Wypełnij okno modalne danymi o filmie
+              document.getElementById('film-title').textContent = movieData.title;
+              document.getElementById('votes').textContent = movieData.vote_count;
+              document.getElementById('popul').textContent = movieData.popularity;
+              document.getElementById('origTitle').textContent = movieData.original_title;
+              document.getElementById('about').textContent = movieData.overview;
+
+              // Wyciągnij gatunki filmu
+              const genres = movieData.genres.map(genre => genre.name);
+              document.getElementById('genre').textContent = genres.join(', ');
+          })
+          .catch(error => {
+              console.error('Error fetching movie details:', error);
+          });
+  });
+});

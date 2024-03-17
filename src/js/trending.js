@@ -32,8 +32,8 @@ const displayMovies = (movies, container) => {
       ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
       : 'https://http.cat/status/404/500x750?text=No+Image+Available';
     movieElement.innerHTML = `
-      <div class="movie-card-template" data-modal-open-window data-movie-id="${movie.id}">
-        <button type="button" class="movie-image">
+      <div class="movie-card-template" data-modal-open data-movie-id="${movie.id}">
+        <button type="button" class="movie-image" >
           <img class='movie-poster' src="${posterUrl}" alt="${movie.title}" />
         </button>
         <div class='movie-details'>
