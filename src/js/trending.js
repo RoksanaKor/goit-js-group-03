@@ -1,8 +1,12 @@
 import axios from 'axios';
 
+const nextButton = document.querySelector('.pagination-page-button.right');
+const prevButton = document.querySelector('.pagination-page-button.left');
+
 const apiKey = '50161d05178dfdcf85b00929de7fbb36';
 const language = 'en-US';
-const pageNum = '1';
+let pageNum = 1;
+let totalPages = 1;
 
 const fetchData = async () => {
   try {
@@ -16,7 +20,9 @@ const fetchData = async () => {
 
     const database = response.data.results;
     const gallery = document.querySelector('.container#gallery');
+    totalPages = 20; // Ustawienie całkowitej liczby stron
     displayMovies(database, gallery);
+    renderPaginationButtons(); // Wywołanie funkcji renderującej przyciski paginacji
   } catch (error) {
     console.error(error);
   }
@@ -75,5 +81,102 @@ const getGenreName = genreId => {
   };
   return genres[genreId] || 'Unknown';
 };
+
+// PAGINACJA
+
+// Przycisk kolejna strona
+nextButton.addEventListener('click', async function loadNextPage() {
+  pageNum++;
+  await fetchData();
+  await scrollToTop();
+});
+
+// Przycisk poprzednia strona
+prevButton.addEventListener('click', async function loadPrevPage() {
+  pageNum--;
+  await fetchData();
+  await scrollToTop();
+});
+
+// Funkcja renderowania przycisków paginacji
+function renderPaginationButtons() {
+  const paginationContainer = document.querySelector('.pagination-slider-buttons-container');
+  paginationContainer.innerHTML = '';
+
+  if (pageNum === 1) {
+    prevButton.classList.add('hidden'); // Wyłącza przycisk "poprzednia strona", gdy wyświetlana jest 1 strona
+  } else {
+    prevButton.classList.remove('hidden'); // Włącz przycisk "poprzednia strona", gdy wyświetlana jest strona inna niż 1
+  }
+
+  if (pageNum === totalPages) {
+    nextButton.classList.add('hidden'); // Wyłącza przycisk "następna strona", gdy wyświetlana jest ostatnia strona
+  } else {
+    nextButton.classList.remove('hidden') // Włącza przycisk "następna strona", gdy wyświetlana jest strona inna niż ostatnia
+  }
+
+  // Przycisk pierwszej strony
+  const firstPageButton = document.createElement('button');
+  firstPageButton.textContent = '1';
+  firstPageButton.classList.add('pagination-page-button');
+  firstPageButton.addEventListener('click', async function () {
+    pageNum = 1;
+    await fetchData();
+    await scrollToTop();
+  });
+  paginationContainer.appendChild(firstPageButton);
+
+  // Dodanie '...' za przyciskiem pierwszej strony (jeśli potrzebne)
+  if (pageNum > 3) {
+    const emptyButton = document.createElement('button');
+    emptyButton.classList.add('empty-button');
+    emptyButton.textContent = '...';
+    emptyButton.disabled = true;
+    paginationContainer.appendChild(emptyButton);
+  }
+
+  // Dodanie max 5 przycisków z numerem strony w centralnej części kontenera
+  for (let i = pageNum - 2; i <= pageNum + 2 && i <= totalPages; i++) {
+    if (i > 1 && i < totalPages) {
+      const pageButton = document.createElement('button');
+      pageButton.textContent = i;
+      pageButton.classList.add('pagination-page-button');
+      pageButton.addEventListener('click', async function () {
+        pageNum = i;
+        await fetchData();
+        await scrollToTop();
+      });
+      paginationContainer.appendChild(pageButton);
+    }
+  }
+
+  // Dodanie '...' przed ostatnią stroną
+  if (pageNum + 1 < totalPages) {
+    const emptyButton = document.createElement('button');
+    emptyButton.classList.add('empty-button');
+    emptyButton.textContent = '...';
+    emptyButton.disabled = true;
+    paginationContainer.appendChild(emptyButton);
+  }
+
+  // Przycisk ostatnia strona
+  const lastPageButton = document.createElement('button');
+  lastPageButton.textContent = totalPages;
+  lastPageButton.classList.add('pagination-page-button');
+  lastPageButton.addEventListener('click', async function () {
+    pageNum = totalPages;
+    await fetchData();
+    await scrollToTop();
+  });
+  paginationContainer.appendChild(lastPageButton);
+}
+
+// Funkcja przewijania na górę strony
+async function scrollToTop() {
+  await window.scrollTo({
+    top: 0,
+    behavior: 'auto' 
+  });
+}
 
 fetchData();
