@@ -42,8 +42,8 @@ async function fetchMovies() {
       console.error('Something went wrong:', error);
       errorDisplay.classList.remove('hidden');
     }
-  } else {
-    errorDisplay.classList.remove('hidden');
+  // } else {
+  //   errorDisplay.classList.remove('hidden');
   }
 }
 
