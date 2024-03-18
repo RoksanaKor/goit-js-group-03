@@ -44,7 +44,7 @@ body {
 /* ------------------------------------------------- MOBILE ---------------------------------------------------------*/
 @media screen and (max-width: 768px) {
   .modal-box {
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -53,10 +53,9 @@ body {
     padding-right: 20px;
     width: 280px;
     height: 940px;
-
   }
 
-  .close-modal-icon svg {
+  .close-modal-icon {
     width: 14px;
     height: 14px;
     position: absolute;
@@ -68,7 +67,7 @@ body {
     justify-content: center;
     padding: 0;
     border: none;
-    background-color: transparent;
+    background-color: blueviolet;
   }
 
   .close-modal-icon:hover,
