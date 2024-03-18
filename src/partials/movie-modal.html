@@ -1,9 +1,16 @@
-<button type="button" class="button-order-service" data-modal-open>OKNO MODALNE</button>
+<!-- <button type="button" class="button-order-service" data-modal-open>OKNO MODALNE</button> -->
 
 <section class="data-modal-backdrop is-hidden" data-modal>
+  `
   <div class="modal-box">
     <div id="modal">
-      <button id="close-modal" class="close-modal-icon" type="button" data-modal-close>
+      <button
+        title="close-movie-modal"
+        id="close-modal"
+        class="close-modal-icon"
+        type="button"
+        data-modal-close
+      >
         <svg
           width="14"
           height="14"
@@ -31,9 +38,12 @@
         <div id="content">
           <div id="left-content" class="film-image-window">
             <div id="film-img" alt="Film Image">
-              <button title="trailer-btn" class="trailer-button" id="film-id" type="button">
-                IMG
-              </button>
+              <!-- <img
+                src="${dataParsed.poster}"
+                alt="Film poster"
+                class="trailer-button"
+                id="film-id"
+              /> -->
             </div>
           </div>
           <div id="right-content">
@@ -81,4 +91,5 @@
       </div>
     </div>
   </div>
+  `;
 </section>
