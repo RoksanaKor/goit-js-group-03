@@ -62,7 +62,12 @@ function displayMovies(movies) {
       : 'https://ih1.redbubble.net/image.272276159.9910/flat,750x,075,f-pad,750x1000,f8f8f8.u1.jpg';
     movieElement.innerHTML = `
       <div class="movie-card-template" data-movie-id="${movie.id}">
-        <img class='movie-poster' src="${posterUrl}" alt="${movie.title.toUpperCase()}" data-value='{"title": "${movie.title.toUpperCase()}", "popularity": "${movie.popularity.toFixed(
+        <img class='movie-poster' src="${posterUrl}" alt="${movie.title.toUpperCase()}" data-id="${
+      movie.id
+    }"   data-value='{"voteaverage": "${roundedVoteAverage}", "releasedate": "${movie.release_date.substring(
+      0,
+      4,
+    )}", "title": "${movie.title.toUpperCase()}", "popularity": "${movie.popularity.toFixed(
       1,
     )}", "poster": "${posterUrl}", "votes": "${roundedVoteAverage} / ${
       movie.vote_count

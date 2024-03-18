@@ -21,6 +21,18 @@ const gallery = document.querySelector('.container#gallery');
       document.querySelector('#genre').innerHTML = dataParsed.genre;
       document.querySelector('#about').innerHTML = dataOverview;
 
+      const watchedBtn = document.querySelector('.watched-button');
+
+      const queueBtn = document.querySelector('.queue-button');
+
+      watchedBtn.setAttribute('data-overview', `${event.target.dataset.overview}`);
+      watchedBtn.setAttribute('data-toparse', `${data}`);
+      watchedBtn.setAttribute('data-id', `${event.target.dataset.id}`);
+
+      queueBtn.setAttribute('data-overview', `${event.target.dataset.overview}`);
+      queueBtn.setAttribute('data-toparse', `${data}`);
+      queueBtn.setAttribute('data-id', `${event.target.dataset.id}`);
+
       toggleModal();
     }
   });
