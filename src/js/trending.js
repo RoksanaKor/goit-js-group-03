@@ -24,6 +24,8 @@ const fetchData = async () => {
     const database = response.data.results;
 
     const gallery = document.querySelector('.container#gallery');
+    gallery.innerHTML = '';
+
     totalPages = 20; // Ustawienie całkowitej liczby stron
     setTimeout(() => {
       displayMovies(database, gallery);
