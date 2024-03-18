@@ -127,6 +127,11 @@ function renderPaginationButtons() {
   const firstPageButton = document.createElement('button');
   firstPageButton.textContent = '1';
   firstPageButton.classList.add('pagination-page-button');
+
+  if (pageNum === 1) {
+    firstPageButton.classList.add('current-page'); // Dodaje klasę current-page dla pierwszej strony, jeśli obecna strona to 1
+  }
+
   firstPageButton.addEventListener('click', async function () {
     pageNum = 1;
     await fetchData();
@@ -176,6 +181,11 @@ function renderPaginationButtons() {
   const lastPageButton = document.createElement('button');
   lastPageButton.textContent = totalPages;
   lastPageButton.classList.add('pagination-page-button');
+
+  if (pageNum === totalPages) {
+    lastPageButton.classList.add('current-page'); // Dodaje klasę current-page dla ostatniej strony, jeśli obecna strona to totalPages
+  }
+
   lastPageButton.addEventListener('click', async function () {
     pageNum = totalPages;
     await fetchData();

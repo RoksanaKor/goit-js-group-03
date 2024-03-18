@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Notiflix from 'notiflix';
 
 const searchForm = document.querySelector('#search-form');
 export const searchInput = searchForm.querySelector('.search-input');
@@ -35,7 +36,11 @@ async function fetchMovies() {
         displayMovies(response.data.results);
         errorDisplay.classList.add('hidden');
         renderPaginationButtons();
+          if (currentPage !== totalPages) {
+          Notiflix.Notify.success(`We found ${response.data.total_results} videos you'll definitely like!`);
+          }
       }
+
     } catch (error) {
       console.error('Something went wrong:', error);
       errorDisplay.classList.remove('hidden');
@@ -125,7 +130,6 @@ prevButton.addEventListener('click', async function loadPrevPage() {
   }
 });
 
-
 // funkcja renderowania przycisków paginacji
 
 function renderPaginationButtons() {
@@ -140,6 +144,7 @@ function renderPaginationButtons() {
 
   if (currentPage === totalPages) {
     nextButton.classList.add('hidden'); // Wyłącza przycisk "następna strona", gdy wyświetlana jest ostatnia strona
+    Notiflix.Notify.warning(`Woopsie! these are the latest videos we found for you!`);
   } else {
     nextButton.classList.remove('hidden'); // Włącza przycisk "następna strona", gdy wyświetlana jest strona inna niż ostatnia
   }
@@ -148,6 +153,11 @@ function renderPaginationButtons() {
   const firstPageButton = document.createElement('button');
   firstPageButton.textContent = '1';
   firstPageButton.classList.add('pagination-page-button');
+
+   if (currentPage === 1) {
+    firstPageButton.classList.add('current-page'); // Dodaje klasę current-page dla pierwszej strony, jeśli obecna strona to 1
+  }
+
   firstPageButton.addEventListener('click', async function () {
     currentPage = 1;
     await fetchMovies();
@@ -198,6 +208,11 @@ function renderPaginationButtons() {
   const lastPageButton = document.createElement('button');
   lastPageButton.textContent = totalPages;
   lastPageButton.classList.add('pagination-page-button');
+
+  if (currentPage === totalPages) {
+    lastPageButton.classList.add('current-page'); // Dodaje klasę current-page dla ostatniej strony, jeśli obecna strona to totalPages
+  }
+
   lastPageButton.addEventListener('click', async function () {
     currentPage = totalPages;
     await fetchMovies();
