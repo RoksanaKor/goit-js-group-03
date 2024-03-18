@@ -23,7 +23,9 @@ searchForm.addEventListener('submit', async function searchMovie(event) {
   currentPage = 1;
   loader.classList.remove('hidden');
   await fetchMovies();
-  loader.classList.add('hidden');
+  setTimeout(function () {
+    loader.classList.add('hidden');
+  }, 5000);
 });
 
 async function fetchMovies() {
