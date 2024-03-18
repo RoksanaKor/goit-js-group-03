@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+import { searchInput } from './search.js';
 const nextButton = document.querySelector('.pagination-page-button.right');
 const prevButton = document.querySelector('.pagination-page-button.left');
 
@@ -10,6 +11,7 @@ let totalPages = 1;
 
 const fetchData = async () => {
   try {
+    const searchInput = document.querySelector('.search-input');
     const response = await axios.get('https://api.themoviedb.org/3/movie/popular', {
       params: { api_key: apiKey, language: language, page: pageNum },
       headers: {
@@ -88,16 +90,20 @@ const getGenreName = genreId => {
 
 // Przycisk kolejna strona
 nextButton.addEventListener('click', async function loadNextPage() {
-  pageNum++;
-  await fetchData();
-  await scrollToTop();
+  if (searchInput.value.trim() === '') {
+    pageNum++;
+    await fetchData();
+    await scrollToTop();
+  }
 });
 
 // Przycisk poprzednia strona
 prevButton.addEventListener('click', async function loadPrevPage() {
-  pageNum--;
-  await fetchData();
-  await scrollToTop();
+ if (searchInput.value.trim() === '') {
+    pageNum--;
+    await fetchData();
+    await scrollToTop();
+  }
 });
 
 // Funkcja renderowania przycisków paginacji
