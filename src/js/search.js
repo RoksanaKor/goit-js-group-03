@@ -1,6 +1,3 @@
-// dodać warunek sprawdzający, czy użytkownik nie wpisał tylko spacji
-// paginacja
-
 import axios from 'axios';
 
 const searchForm = document.querySelector('#search-form');
@@ -178,6 +175,12 @@ function renderPaginationButtons() {
         await fetchMovies();
         await scrollToTop();
       });
+
+      // Dodaj klasę CSS current-page do przycisku reprezentującego aktualną stronę
+      if (currentPage === i) {
+        pageButton.classList.add('current-page');
+      }
+      
       paginationContainer.appendChild(pageButton);
     }
   }
@@ -198,7 +201,7 @@ function renderPaginationButtons() {
   lastPageButton.addEventListener('click', async function () {
     currentPage = totalPages;
     await fetchMovies();
-    await crollToTop();
+    await scrollToTop();
   });
   paginationContainer.appendChild(lastPageButton);
 }
