@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const searchForm = document.querySelector('#search-form');
-const searchInput = searchForm.querySelector('.search-input');
+export const searchInput = searchForm.querySelector('.search-input');
 const errorDisplay = document.querySelector('.errorDisplay');
 const gallery = document.querySelector('#gallery');
 const nextButton = document.querySelector('.pagination-page-button.right');
@@ -109,17 +109,22 @@ function getGenreName(genreId) {
 
 // Przycisk kolejna strona
 nextButton.addEventListener('click', async function loadNextPage() {
-  currentPage++;
-  await fetchMovies();
-  await scrollToTop();
+  if (searchInput.value.trim() !== '') {
+    currentPage++;
+    await fetchMovies();
+    await scrollToTop();
+  }
 });
 
 // Przycisk poprzednia strona
 prevButton.addEventListener('click', async function loadPrevPage() {
-  currentPage--;
-  await fetchMovies();
-  await scrollToTop();
+  if (searchInput.value.trim() !== '') {
+    currentPage--;
+    await fetchMovies();
+    await scrollToTop();
+  }
 });
+
 
 // funkcja renderowania przycisków paginacji
 
