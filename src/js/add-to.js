@@ -3,6 +3,7 @@ import Notiflix from 'notiflix';
 
 const addToWatched = document.querySelector('#watched-btn');
 const addToQueue = document.querySelector('#queue-btn');
+const libraryGallery = document.querySelector('.container#library-gallery');
 
 const movieData = {
   watchedMovies: [],
@@ -40,9 +41,9 @@ function onClickWatched(event) {
   } else {
     Notiflix.Notify.failure('You already added this movie to watchlist');
   }
-  // removeFromQueue(movie);
   removeFromQueue(stringedMovieInfo);
   saveData(movieData);
+  displayMovies(libraryGallery);
 }
 
 function onClickQueue(event) {
@@ -57,9 +58,10 @@ function onClickQueue(event) {
   } else {
     Notiflix.Notify.failure('You already added this movie to queue');
   }
-  // removeFromWatched(movie);
+
   removeFromWatched(stringedMovieInfo);
   saveData(movieData);
+  displayMovies(movies);
 }
 
 function removeFromWatched(thisMovie) {
@@ -73,5 +75,24 @@ function removeFromQueue(thisMovie) {
   const movieIndex = movieData.queueMovies.findIndex(m => m === thisMovie);
   if (movieIndex !== -1) {
     movieData.queueMovies.splice(movieIndex, 1);
+  }
+}
+
+function displayMovies(gallery) {
+  gallery.innerHTML = '';
+  
+  const movieElement = document.createElement('div');
+  movieElement.classList.add('movie-item');
+  movieElement.innerHTML = `
+    <div class="movie-card-template" data-movie-id="${movie.id}">
+      <img class='movie-poster' src="${movie.info.poster}" alt="${movie.title}" data-id="${movie.id}"   data-value='{"title": "${movie.title}", "popularity": "${movie.info.popularity}", "poster": "${movie.info.poster}", "votes": "${movie.info.votes}", "genre": "${movie.info.genre}"}' data-overview="${movie.overview}"/>
+      
+      <div class='movie-details'>
+        <h3 class='movie-title'>${movie.title}</h3>
+        <p class='movie-details'>${movie.info.genre} | ${movie.info.releasedate} <span class="vote-average">${movie.info.voteaverage}</span></p>
+      </div>
+    </div>
+  `;
+  gallery.innerHTML += movieElement;
   }
 }
