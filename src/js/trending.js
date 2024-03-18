@@ -148,6 +148,11 @@ function renderPaginationButtons() {
         await fetchData();
         await scrollToTop();
       });
+
+    if (pageNum === i) {
+        pageButton.classList.add('current-page');
+      }
+
       paginationContainer.appendChild(pageButton);
     }
   }
