@@ -34,19 +34,21 @@ const displayMovies = (movies, container) => {
     const movieElement = document.createElement('div');
     movieElement.classList.add('movie-item');
     const roundedVoteAverage = movie.vote_average.toFixed(1);
+    const genre = movie.genre_ids.map(id => getGenreName(id)).join(', ');
     const posterUrl = movie.poster_path
       ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
       : 'https://http.cat/status/404/500x750?text=No+Image+Available';
     movieElement.innerHTML = `
-      <div class="movie-card-template" data-modal-open-window data-movie-id="${movie.id}">
-        <button type="button" class="movie-image">
-          <img class='movie-poster' src="${posterUrl}" alt="${movie.title}" />
-        </button>
+      <div class="movie-card-template" data-movie-id="${movie.id}">
+        <img class='movie-poster' src="${posterUrl}" alt="${movie.title.toUpperCase()}" data-value='{"title": "${movie.title.toUpperCase()}", "popularity": "${movie.popularity.toFixed(
+      1,
+    )}", "poster": "${posterUrl}", "votes": "${roundedVoteAverage} / ${
+      movie.vote_count
+    }", "genre": "${genre}"}' data-overview="${movie.overview}"/>
+        
         <div class='movie-details'>
           <h3 class='movie-title'>${movie.title}</h3>
-          <p class='movie-details'>${movie.genre_ids
-            .map(id => getGenreName(id))
-            .join(', ')} | ${movie.release_date.substring(
+          <p class='movie-details'>${genre} | ${movie.release_date.substring(
       0,
       4,
     )} <span class="vote-average">${roundedVoteAverage}</span></p>

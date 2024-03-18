@@ -23,12 +23,13 @@ searchForm.addEventListener('submit', async function searchMovie(event) {
   await fetchMovies();
 });
 
-
 async function fetchMovies() {
   const searchQuery = searchInput.value.trim();
   if (searchQuery) {
     try {
-      const response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${searchQuery}&page=${currentPage}`);
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${searchQuery}&page=${currentPage}`,
+      );
       totalPages = response.data.total_pages;
       if (response.data.results.length === 0) {
         errorDisplay.classList.remove('hidden');
@@ -55,7 +56,9 @@ function displayMovies(movies) {
     const movieElement = document.createElement('div');
     movieElement.classList.add('movie-item');
     const roundedVoteAverage = movie.vote_average.toFixed(1);
-    const posterUrl = movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : 'https://ih1.redbubble.net/image.272276159.9910/flat,750x,075,f-pad,750x1000,f8f8f8.u1.jpg';
+    const posterUrl = movie.poster_path
+      ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+      : 'https://ih1.redbubble.net/image.272276159.9910/flat,750x,075,f-pad,750x1000,f8f8f8.u1.jpg';
     movieElement.innerHTML = `
       <div class="movie-card-template">
         <button type="button" class="movie-image">
@@ -63,7 +66,12 @@ function displayMovies(movies) {
         </button>
         <div class='movie-details'>
           <h3 class='movie-title'>${movie.title}</h3>
-          <p class='movie-details'>${movie.genre_ids.map(id => getGenreName(id)).join(', ')} | ${movie.release_date.substring(0, 4)} <span class="vote-average">${roundedVoteAverage}</span></p>
+          <p class='movie-details'>${movie.genre_ids
+            .map(id => getGenreName(id))
+            .join(', ')} | ${movie.release_date.substring(
+      0,
+      4,
+    )} <span class="vote-average">${roundedVoteAverage}</span></p>
         </div>
       </div>
     `;
@@ -75,25 +83,25 @@ function displayMovies(movies) {
 
 function getGenreName(genreId) {
   const genres = {
-    "28": "Action",
-    "12": "Adventure",
-    "16": "Animation",
-    "35": "Comedy",
-    "80": "Crime",
-    "99": "Documentary",
-    "18": "Drama",
-    "10751": "Family",
-    "14": "Fantasy",
-    "36": "History",
-    "27": "Horror",
-    "10402": "Music",
-    "9648": "Mystery",
-    "10749": "Romance",
-    "878": "Science Fiction",
-    "10770": "TV Movie",
-    "53": "Thriller",
-    "10752": "War",
-    "37": "Western"
+    28: 'Action',
+    12: 'Adventure',
+    16: 'Animation',
+    35: 'Comedy',
+    80: 'Crime',
+    99: 'Documentary',
+    18: 'Drama',
+    10751: 'Family',
+    14: 'Fantasy',
+    36: 'History',
+    27: 'Horror',
+    10402: 'Music',
+    9648: 'Mystery',
+    10749: 'Romance',
+    878: 'Science Fiction',
+    10770: 'TV Movie',
+    53: 'Thriller',
+    10752: 'War',
+    37: 'Western',
   };
   return genres[genreId] || 'Unknown';
 }
@@ -129,9 +137,9 @@ function renderPaginationButtons() {
   if (currentPage === totalPages) {
     nextButton.classList.add('hidden'); // Wyłącza przycisk "następna strona", gdy wyświetlana jest ostatnia strona
   } else {
-    nextButton.classList.remove('hidden') // Włącza przycisk "następna strona", gdy wyświetlana jest strona inna niż ostatnia
+    nextButton.classList.remove('hidden'); // Włącza przycisk "następna strona", gdy wyświetlana jest strona inna niż ostatnia
   }
-  
+
   // Przycisk pierwszej strony
   const firstPageButton = document.createElement('button');
   firstPageButton.textContent = '1';
@@ -192,6 +200,6 @@ function renderPaginationButtons() {
 async function scrollToTop() {
   await window.scrollTo({
     top: 0,
-    behavior: 'auto' 
+    behavior: 'auto',
   });
 }

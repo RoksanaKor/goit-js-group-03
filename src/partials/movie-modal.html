@@ -1,9 +1,16 @@
-<button type="button" class="button-order-service" data-modal-open>OKNO MODALNE</button>
+<!-- <button type="button" class="button-order-service" data-modal-open>OKNO MODALNE</button> -->
 
 <section class="data-modal-backdrop is-hidden" data-modal>
+  `
   <div class="modal-box">
     <div id="modal">
-      <button id="close-modal" class="close-modal-icon" type="button" data-modal-close>
+      <button
+        title="close-movie-modal"
+        id="close-modal"
+        class="close-modal-icon"
+        type="button"
+        data-modal-close
+      >
         <svg
           width="14"
           height="14"
@@ -30,17 +37,13 @@
       <div id="movie-card">
         <div id="content">
           <div id="left-content" class="film-image-window">
-            <div id="film-img" alt="Film Image">
-              <button title="trailer-btn" class="trailer-button" id="film-id" type="button">
-                IMG
-              </button>
-            </div>
+            <div id="film-img" alt="Film Image"></div>
           </div>
           <div id="right-content">
             <h2 id="film-title"></h2>
             <div id="description" class="modal-description">
               <div class="left-descr-content">
-                Votes
+                Vote / Votes
                 <div id="votes"></div>
               </div>
               <div class="left-descr-content">
@@ -81,4 +84,5 @@
       </div>
     </div>
   </div>
+  `;
 </section>
