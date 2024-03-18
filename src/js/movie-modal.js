@@ -11,102 +11,21 @@ const gallery = document.querySelector('.container#gallery');
       let data = `${event.target.dataset.value}`;
       let dataOverview = event.target.dataset.overview;
       let dataParsed = JSON.parse(data);
-      document.querySelector('.data-modal-backdrop').innerHTML = `<div class="modal-box">
-        <div id="modal">
-          <button
-            title="close-movie-modal"
-            id="close-modal"
-            class="close-modal-icon"
-            type="button"
-            data-modal-close
-          >
-           <svg
-          width="14"
-          height="14"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M18 6L6 18"
-            stroke="#111111"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M6 6L18 18"
-            stroke="#111111"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-          </button>
-          <div id="movie-card">
-            <div id="content">
-              <div id="left-content" class="film-image-window">
-                <div id="film-img" alt="Film Image">
-                  <img
-                    src="${dataParsed.poster}"
-                    alt="Film poster"
-                    class="trailer-button"
-                    id="film-id"
-                  />
-                </div>
-              </div>
-              <div id="right-content">
-                <h2 id="film-title">${dataParsed.title}</h2>
-                <div id="description" class="modal-description">
-                  <div class="left-descr-content">
-                    Vote / Votes <span>${dataParsed.votes}</span>
-                    <div id="votes"></div>
-                  </div>
-                  <div class="left-descr-content">
-                    Popularity<span>${dataParsed.popularity}</span>
-                    <div id="popul"></div>
-                  </div>
-                  <div class="left-descr-content">
-                    Original title <span>${dataParsed.title}</span>
-                    <div id="origTitle"></div>
-                  </div>
-                  <div class="left-descr-content">
-                    Genre <span>${dataParsed.genre}</span>
-                    <div id="genre"></div>
-                  </div>
-                </div>
-                <div class="text-about">
-                  <span>About</span>
-                  <p class="movie-overview">${dataOverview}</p>
-                  <div id="about"></div>
-                </div>
+      document.querySelector(
+        '#film-img',
+      ).innerHTML = `<img src="${dataParsed.poster}" alt="Film poster" class="trailer-button" id="film-id" />`;
+      document.querySelector('#film-title').innerHTML = dataParsed.title;
+      document.querySelector('#votes').innerHTML = dataParsed.votes;
+      document.querySelector('#popul').innerHTML = dataParsed.popularity;
+      document.querySelector('#origTitle').innerHTML = dataParsed.title;
+      document.querySelector('#genre').innerHTML = dataParsed.genre;
+      document.querySelector('#about').innerHTML = dataOverview;
 
-                <div class="button-wrapper" id="buttonWrapper">
-                  <button
-                    title="watched-btn"
-                    type="button"
-                    class="watched-button"
-                    id="watched-btn"
-                    data-value="add"
-                  >
-                    ADD TO WATCHED
-                  </button>
-
-                  <button type="button" class="queue-button" id="queue-btn" data-value="add">
-                    ADD TO QUEUE
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>`;
       toggleModal();
     }
   });
-  refs.closeModalBtn.addEventListener('click', () => {
-    closeIfOpen();
-  });
+
+  refs.closeModalBtn.addEventListener('click', toggleModal);
 
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') {
