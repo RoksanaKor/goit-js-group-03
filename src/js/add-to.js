@@ -3,7 +3,6 @@ import Notiflix from 'notiflix';
 
 const addToWatched = document.querySelector('#watched-btn');
 const addToQueue = document.querySelector('#queue-btn');
-const libraryGallery = document.querySelector('.container#library-gallery');
 
 const movieData = {
   watchedMovies: [],
@@ -30,11 +29,15 @@ addToWatched.addEventListener('click', event => onClickWatched(event));
 addToQueue.addEventListener('click', event => onClickQueue(event));
 
 function onClickWatched(event) {
+  console.log(event.target);
   const movieInfo = {
     id: `${event.target.dataset.id}`,
     overview: `${event.target.dataset.overview}`,
     info: `${event.target.dataset.toparse}`,
   };
+  console.log(movieInfo);
+  const movieInfoInfoObject = JSON.parse(movieInfo.info);
+  console.log(movieInfoInfoObject);
   const stringedMovieInfo = JSON.stringify(movieInfo);
   if (movieData.watchedMovies.indexOf(stringedMovieInfo) === -1) {
     movieData.watchedMovies.push(stringedMovieInfo);
@@ -43,7 +46,6 @@ function onClickWatched(event) {
   }
   removeFromQueue(stringedMovieInfo);
   saveData(movieData);
-  displayMovies(libraryGallery);
 }
 
 function onClickQueue(event) {
@@ -52,6 +54,7 @@ function onClickQueue(event) {
     overview: `${event.target.dataset.overview}`,
     info: `${event.target.dataset.toparse}`,
   };
+  const movieInfoInfoObject = JSON.parse(movieInfo.info);
   const stringedMovieInfo = JSON.stringify(movieInfo);
   if (movieData.queueMovies.indexOf(stringedMovieInfo) === -1) {
     movieData.queueMovies.push(stringedMovieInfo);
@@ -61,7 +64,6 @@ function onClickQueue(event) {
 
   removeFromWatched(stringedMovieInfo);
   saveData(movieData);
-  displayMovies(movies);
 }
 
 function removeFromWatched(thisMovie) {
@@ -78,21 +80,19 @@ function removeFromQueue(thisMovie) {
   }
 }
 
-function displayMovies(gallery) {
-  gallery.innerHTML = '';
-  
-  const movieElement = document.createElement('div');
-  movieElement.classList.add('movie-item');
-  movieElement.innerHTML = `
-    <div class="movie-card-template" data-movie-id="${movie.id}">
-      <img class='movie-poster' src="${movie.info.poster}" alt="${movie.title}" data-id="${movie.id}"   data-value='{"title": "${movie.title}", "popularity": "${movie.info.popularity}", "poster": "${movie.info.poster}", "votes": "${movie.info.votes}", "genre": "${movie.info.genre}"}' data-overview="${movie.overview}"/>
-      
-      <div class='movie-details'>
-        <h3 class='movie-title'>${movie.title}</h3>
-        <p class='movie-details'>${movie.info.genre} | ${movie.info.releasedate} <span class="vote-average">${movie.info.voteaverage}</span></p>
-      </div>
-    </div>
-  `;
-  gallery.innerHTML += movieElement;
-  }
-}
+// function fetchMovieWatched(generalinfo, details) {
+//   const movieElement = document.createElement('div');
+//   movieElement.classList.add('movie-item');
+//   movieElement.innerHTML = `
+//     <div class="movie-card-template" data-movie-id="${generalinfo.id}">
+//       <img class='movie-poster' src="${details.poster}" alt="${details.title}" data-id="${generalinfo.id}"   data-value='{"title": "${details.title}", "popularity": "${details.popularity}", "poster": "${details.poster}", "votes": "${details.votes}", "genre": "${details.genre}"}' data-overview="${generalinfo.overview}"/>
+
+//       <div class='movie-details'>
+//         <h3 class='movie-title'>${details.title}</h3>
+//         <p class='movie-details'>${details.genre} | ${details.releasedate} <span class="vote-average">${details.voteaverage}</span></p>
+//       </div>
+//     </div>
+//   `;
+//   console.log(movieElement);
+//   // libraryGallery.insertAdjacentElement('beforeend', movieElement);
+// }
