@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+import { searchInput } from './search.js';
 const nextButton = document.querySelector('.pagination-page-button.right');
 const prevButton = document.querySelector('.pagination-page-button.left');
 const loader = document.querySelector('.loader');
@@ -11,7 +12,11 @@ let totalPages = 1;
 
 const fetchData = async () => {
   try {
-    loader.classList.remove('hidden');
+
+    loader.classList.remove('hidden');//ewa
+
+
+    const searchInput = document.querySelector('.search-input');//main
 
     const response = await axios.get('https://api.themoviedb.org/3/movie/popular', {
       params: { api_key: apiKey, language: language, page: pageNum },
@@ -98,16 +103,20 @@ const getGenreName = genreId => {
 
 // Przycisk kolejna strona
 nextButton.addEventListener('click', async function loadNextPage() {
-  pageNum++;
-  await fetchData();
-  await scrollToTop();
+  if (searchInput.value.trim() === '') {
+    pageNum++;
+    await fetchData();
+    await scrollToTop();
+  }
 });
 
 // Przycisk poprzednia strona
 prevButton.addEventListener('click', async function loadPrevPage() {
-  pageNum--;
-  await fetchData();
-  await scrollToTop();
+ if (searchInput.value.trim() === '') {
+    pageNum--;
+    await fetchData();
+    await scrollToTop();
+  }
 });
 
 // Funkcja renderowania przycisków paginacji
@@ -131,6 +140,11 @@ function renderPaginationButtons() {
   const firstPageButton = document.createElement('button');
   firstPageButton.textContent = '1';
   firstPageButton.classList.add('pagination-page-button');
+
+  if (pageNum === 1) {
+    firstPageButton.classList.add('current-page'); // Dodaje klasę current-page dla pierwszej strony, jeśli obecna strona to 1
+  }
+
   firstPageButton.addEventListener('click', async function () {
     pageNum = 1;
     await fetchData();
@@ -180,6 +194,11 @@ function renderPaginationButtons() {
   const lastPageButton = document.createElement('button');
   lastPageButton.textContent = totalPages;
   lastPageButton.classList.add('pagination-page-button');
+
+  if (pageNum === totalPages) {
+    lastPageButton.classList.add('current-page'); // Dodaje klasę current-page dla ostatniej strony, jeśli obecna strona to totalPages
+  }
+
   lastPageButton.addEventListener('click', async function () {
     pageNum = totalPages;
     await fetchData();
