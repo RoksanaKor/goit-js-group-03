@@ -3,7 +3,8 @@
 <section class="data-modal-backdrop is-hidden" data-modal>
   `
   <div class="modal-box">
-    <div id="modal">
+    <div id="modal"> 
+      <!-- przycisk zamykający modal -->
       <button
         title="close-movie-modal"
         id="close-modal"
@@ -34,33 +35,38 @@
           />
         </svg>
       </button>
+      <!-- kontener na całą kartę filmu w modalu: plakat, info, przyciski -->
       <div id="movie-card">
         <div id="content">
+          <!--okno plakatu -->
           <div id="left-content" class="film-image-window">
+            <!-- plakat -->
             <div id="film-img" alt="Film Image"></div>
           </div>
           <div id="right-content">
+            <!-- tytuł filmu -->
             <h2 id="film-title"></h2>
             <div id="description" class="modal-description">
               <div class="left-descr-content">
-                Vote / Votes
+                <p class="modal-stats">Vote / Votes</p>
                 <div id="votes"></div>
               </div>
+              <!-- kontener statystyk -->
               <div class="left-descr-content">
-                Popularity
+                <p class="modal-stats">Popularity</p>
                 <div id="popul"></div>
               </div>
               <div class="left-descr-content">
-                Original title
+                <p class="modal-stats">Original title</p>
                 <div id="origTitle"></div>
               </div>
               <div class="left-descr-content">
-                Genre
+                <p class="modal-stats">Genre</p>
                 <div id="genre"></div>
               </div>
             </div>
-            <div class="text-about">
-              <span>About</span>
+            <div >
+              <span class="text-about">About</span>
               <div id="about"></div>
             </div>
 
