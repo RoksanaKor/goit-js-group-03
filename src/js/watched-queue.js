@@ -1,12 +1,12 @@
 // WATCHED & QUEUE -----------------------------
-//Sprawdzenie obejrzanych i zakolejkowanych filmów
-let watchedMovies = JSON.parse(localStorage.getItem("watchedMovies"));
-let queuedMovies = JSON.parse(localStorage.getItem("queueMovies"));
 
-const watchedMoviesContainerEl = document.querySelector("movie-id");
-const queuedMoviesContainerEl = document.querySelector("movie-id");
+let dataMovies = JSON.parse(localStorage.getItem("data-movies"));
+console.log(dataMovies.watchedMovies);
 
-if (watchedMovies && Array.isArray(watchedMovies)) {
+const watchedMoviesContainerEl = document.querySelector("#watched-library");
+const queuedMoviesContainerEl = document.querySelector("#queued-library");
+
+if (dataMovies.watchedMovies && Array.isArray(dataMovies.watchedMovies)) {
   const showWatchedMovies = movies => {
     movies.forEach(movie => {
       const card = document.createElement("div");
@@ -26,17 +26,17 @@ if (watchedMovies && Array.isArray(watchedMovies)) {
       watchedMoviesContainerEl.classList.remove("hiddenColor");
     });
   };
-  showWatchedMovies(watchedMovies);
+  showWatchedMovies(dataMovies.watchedMovies);
 } else {
   const noWatchedMovies = document.createElement("div");
   noWatchedMovies.innerHTML = `
     <p class="library__title">
         <strong>You have no watched movies.</strong><br /><a href="index.html">Select first movie</a> and click "Add to watched" button.
     </p>`;
-  //watchedMoviesContainerEl.appendChild(noWatchedMovies);
+  watchedMoviesContainerEl.appendChild(noWatchedMovies);
 }
 
-if (queuedMovies && Array.isArray(queuedMovies)) {
+if (dataMovies.queuedMovies && Array.isArray(dataMovies.queuedMovies)) {
   const showQueuedMovies = movies => {
     movies.forEach(movie => {
       const card = document.createElement("div");
@@ -56,30 +56,25 @@ if (queuedMovies && Array.isArray(queuedMovies)) {
       queuedMoviesContainerEl.classList.remove("hiddenColor");
     });
   };
-  showQueuedMovies(queuedMovies);
+  showQueuedMovies(dataMovies.queuedMovies);
 } else {
   const noQueuedMovies = document.createElement("div");
   noQueuedMovies.innerHTML = `
     <p class="library__title">
         <strong>You have no queued movies.</strong><br /><a href="index.html">Select first movie</a> and click "Add to queue" button.
     </p>`;
-  //queuedMoviesContainerEl.appendChild(noQueuedMovies);
+  queuedMoviesContainerEl.appendChild(noQueuedMovies);
 }
 
- const watchedBtnEl = document.querySelector("#button-watched");
+const watchedBtnEl = document.querySelector("#button-watched");
 const queueBtnEl = document.querySelector("#button-queue");
-const watchedDivEl = document.querySelector("#library-watched");
-const queuedDivEl = document.querySelector("#library-queued");
-const libraryInfoEl = document.querySelector("#library-info"); 
+
 
  queueBtnEl.addEventListener("click", () => { 
-  watchedDivEl.classList.add("hidden-in-library");
-  queuedDivEl.classList.remove("hidden-in-library");
-  libraryInfoEl.classList.add("hidden-in-library");
+   watchedMoviesContainerEl.style.display = 'none';
+   queuedMoviesContainerEl.style.display = 'block';
 });
 watchedBtnEl.addEventListener("click", () => {
-  watchedDivEl.classList.remove("hidden-in-library");
-  queuedDivEl.classList.add("hidden-in-library");
-  libraryInfoEl.classList.add("hidden-in-library");
+  watchedMoviesContainerEl.style.display ='block';
+  queuedMoviesContainerEl.style.display = 'none';
 });
-
