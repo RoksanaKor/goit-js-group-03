@@ -12,11 +12,9 @@ let totalPages = 1;
 
 const fetchData = async () => {
   try {
+    loader.classList.remove('hidden'); //ewa
 
-    loader.classList.remove('hidden');//ewa
-
-
-    const searchInput = document.querySelector('.search-input');//main
+    const searchInput = document.querySelector('.search-input'); //main
 
     const response = await axios.get('https://api.themoviedb.org/3/movie/popular', {
       params: { api_key: apiKey, language: language, page: pageNum },
@@ -53,6 +51,7 @@ const displayMovies = (movies, container) => {
     const posterUrl = movie.poster_path
       ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
       : 'https://http.cat/status/404/500x750?text=No+Image+Available';
+
     movieElement.innerHTML = `
       <div class="movie-card-template" data-movie-id="${movie.id}">
         <img class='movie-poster' src="${posterUrl}" alt="${movie.title.toUpperCase()}" data-id="${
@@ -117,7 +116,7 @@ nextButton.addEventListener('click', async function loadNextPage() {
 
 // Przycisk poprzednia strona
 prevButton.addEventListener('click', async function loadPrevPage() {
- if (searchInput.value.trim() === '') {
+  if (searchInput.value.trim() === '') {
     pageNum--;
     await fetchData();
     await scrollToTop();

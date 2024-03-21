@@ -1,16 +1,6 @@
 import {} from './goit-modal.js';
 import {} from './goit-modal-gallery.js';
-import {} from './add-to.js';
-import axios from 'axios';
-const apiKey = '50161d05178dfdcf85b00929de7fbb36';
-const language = 'en-US';
-
-try {
-  const stringedData = JSON.stringify(movieData);
-  localStorage.setItem('data-movies', stringedData);
-} catch (error) {
-  console.log('stringed-data error: ' + error);
-}
+import { onClickQueue, onClickWatched } from './add-to.js';
 
 const libraryGallery = document.querySelector('.container#library-gallery');
 const myLibraryButton = document.querySelector('#myLibrarySwitch');
@@ -22,10 +12,10 @@ const dataMoviesParsed = JSON.parse(dataMovies);
 const watchedArray = dataMoviesParsed.watchedMovies;
 const queueArray = dataMoviesParsed.queueMovies;
 
-myLibraryButton.addEventListener('click', event => {
-  event.preventDefault();
-  saveData;
-});
+// myLibraryButton.addEventListener('click', event => {
+//   event.preventDefault();
+//   saveData;
+// });
 
 // function displayMovies(movies) {
 //   libraryGallery.innerHTML = '';
@@ -47,3 +37,22 @@ myLibraryButton.addEventListener('click', event => {
 //     libraryGallery.appendChild(movieElement);
 //   }
 // }
+
+fetchMovieWatched(movieInfoExport, movieInfoInfoObjectExport, libraryGallery);
+
+function fetchMovieWatched(generalinfo, details, gallery) {
+  const movieElement = document.createElement('div');
+  movieElement.classList.add('movie-item');
+  movieElement.innerHTML = `
+    <div class="movie-card-template" data-movie-id="${generalinfo.id}">
+      <img class='movie-poster' src="${details.poster}" alt="${details.title}" data-id="${generalinfo.id}"   data-value='{"title": "${details.title}", "popularity": "${details.popularity}", "poster": "${details.poster}", "votes": "${details.votes}", "genre": "${details.genre}"}' data-overview="${generalinfo.overview}"/>
+
+      <div class='movie-details'>
+        <h3 class='movie-title'>${details.title}</h3>
+        <p class='movie-details'>${details.genre} | ${details.releasedate} <span class="vote-average">${details.voteaverage}</span></p>
+      </div>
+    </div>
+  `;
+  console.log(movieElement);
+  gallery.insertAdjacentElement('beforeend', movieElement);
+}

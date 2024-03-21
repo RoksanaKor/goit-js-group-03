@@ -18,13 +18,6 @@ const saveData = movieData => {
   }
 };
 
-try {
-  const stringedData = JSON.stringify(movieData);
-  localStorage.setItem('data-movies', stringedData);
-} catch (error) {
-  console.log('stringed-data error: ' + error);
-}
-
 addToWatched.addEventListener('click', event => onClickWatched(event));
 addToQueue.addEventListener('click', event => onClickQueue(event));
 
@@ -47,6 +40,8 @@ function onClickWatched(event) {
   removeFromQueue(stringedMovieInfo);
   saveData(movieData);
 }
+let movieInfoExport;
+const movieInfoInfoObjectExport = JSON.parse(movieInfoExport.info);
 
 function onClickQueue(event) {
   const movieInfo = {
@@ -54,7 +49,7 @@ function onClickQueue(event) {
     overview: `${event.target.dataset.overview}`,
     info: `${event.target.dataset.toparse}`,
   };
-  const movieInfoInfoObject = JSON.parse(movieInfo.info);
+  movieInfoExport = movieInfo;
   const stringedMovieInfo = JSON.stringify(movieInfo);
   if (movieData.queueMovies.indexOf(stringedMovieInfo) === -1) {
     movieData.queueMovies.push(stringedMovieInfo);
@@ -80,19 +75,14 @@ function removeFromQueue(thisMovie) {
   }
 }
 
-// function fetchMovieWatched(generalinfo, details) {
-//   const movieElement = document.createElement('div');
-//   movieElement.classList.add('movie-item');
-//   movieElement.innerHTML = `
-//     <div class="movie-card-template" data-movie-id="${generalinfo.id}">
-//       <img class='movie-poster' src="${details.poster}" alt="${details.title}" data-id="${generalinfo.id}"   data-value='{"title": "${details.title}", "popularity": "${details.popularity}", "poster": "${details.poster}", "votes": "${details.votes}", "genre": "${details.genre}"}' data-overview="${generalinfo.overview}"/>
+try {
+  const parsedData = JSON.parse(localStorage.getItem('data-movies'));
+  if (parsedData.watchedMovies != [] || parsedData.queueMovies != []) {
+    movieData.watchedMovies = parsedData.watchedMovies;
+    movieData.queueMovies = parsedData.queueMovies;
+  }
+} catch (error) {
+  console.log('parsedData error: ' + error);
+}
 
-//       <div class='movie-details'>
-//         <h3 class='movie-title'>${details.title}</h3>
-//         <p class='movie-details'>${details.genre} | ${details.releasedate} <span class="vote-average">${details.voteaverage}</span></p>
-//       </div>
-//     </div>
-//   `;
-//   console.log(movieElement);
-//   // libraryGallery.insertAdjacentElement('beforeend', movieElement);
-// }
+export { movieInfoExport, movieInfoInfoObjectExport };
