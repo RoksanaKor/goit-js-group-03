@@ -7,7 +7,9 @@
 } */
 
 /* Układ siatki (grid) */
-.container#gallery {
+.container#gallery,
+#library-watched,
+#library-queued {
   display: grid;
   background-color: #fff;
   margin: 0 auto;
@@ -21,7 +23,10 @@
 
 /* mobile */
 @media (max-width: 768px) {
-  .container#gallery {
+
+  .container#gallery,
+  #library-watched,
+  #library-queued {
     grid-template-columns: repeat(1, 1fr);
     column-gap: 20px;
     padding-top: 20px;
@@ -87,7 +92,10 @@
 
 /* tablet */
 @media (min-width: 768px) and (max-width: 1280px) {
-  .container#gallery {
+
+  .container#gallery,
+  #library-watched,
+  #library-queued {
     grid-template-columns: repeat(2, 1fr);
     column-gap: 32px;
     padding-top: 60px;
@@ -118,6 +126,7 @@
     text-transform: uppercase;
     margin-top: 8px;
   }
+
   .movie-details {
     color: rgb(255, 107, 8);
     font-family: Roboto;
@@ -148,7 +157,10 @@
 
 /* desktop */
 @media (min-width: 1280px) {
-  .container#gallery {
+
+  .container#gallery,
+  #library-watched,
+  #library-queued {
     grid-template-columns: repeat(3, 1fr);
     column-gap: 16px;
     padding-top: 60px;
@@ -325,6 +337,7 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
