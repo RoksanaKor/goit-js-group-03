@@ -73,12 +73,13 @@ function removeFromQueue(thisMovie) {
 }
 
 try {
-  const parsedData = JSON.parse(localStorage.getItem('data-movies'));
-  if (parsedData.watchedMovies != [] || parsedData.queueMovies != []) {
-    movieData.watchedMovies = parsedData.watchedMovies;
-    movieData.queueMovies = parsedData.queueMovies;
+  if (localStorage.getItem('data-movies') !== null) {
+    const parsedData = JSON.parse(localStorage.getItem('data-movies'));
+    if (parsedData.watchedMovies != [] || parsedData.queueMovies != []) {
+      movieData.watchedMovies = parsedData.watchedMovies;
+      movieData.queueMovies = parsedData.queueMovies;
+    }
   }
-  console.log(parsedData);
 } catch (error) {
   console.log('parsedData error: ' + error);
 }
