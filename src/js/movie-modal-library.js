@@ -1,4 +1,4 @@
-const gallery = document.querySelector('.container#gallery');
+const libraryGallery = document.querySelector('.container#library-gallery');
 (() => {
   const refs = {
     openModalBtn: document.querySelector('[data-modal-open]'),
@@ -6,7 +6,7 @@ const gallery = document.querySelector('.container#gallery');
     modal: document.querySelector('[data-modal]'),
   };
 
-  gallery.addEventListener('click', event => {
+  libraryGallery.addEventListener('click', event => {
     if (event.target.nodeName === 'IMG') {
       let data = `${event.target.dataset.value}`;
       let dataOverview = event.target.dataset.overview;
@@ -21,9 +21,9 @@ const gallery = document.querySelector('.container#gallery');
       document.querySelector('#genre').innerHTML = dataParsed.genre;
       document.querySelector('#about').innerHTML = dataOverview;
 
-      const watchedBtn = document.querySelector('.watched-button');
+      const watchedBtn = document.querySelector('#watched-btn');
 
-      const queueBtn = document.querySelector('.queue-button');
+      const queueBtn = document.querySelector('#queue-btn');
 
       watchedBtn.setAttribute('data-overview', `${event.target.dataset.overview}`);
       watchedBtn.setAttribute('data-toparse', `${data}`);

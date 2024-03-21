@@ -18,56 +18,67 @@ const saveData = movieData => {
   }
 };
 
-try {
-  const stringedData = JSON.stringify(movieData);
-  localStorage.setItem('data-movies', stringedData);
-} catch (error) {
-  console.log('stringed-data error: ' + error);
-}
+addToWatched.addEventListener('click', event => onClickWatched(event));
+addToQueue.addEventListener('click', event => onClickQueue(event));
 
-addToWatched.addEventListener('click', onClickWatched);
-addToQueue.addEventListener('click', onClickQueue);
-
-function onClickWatched() {
-  // const movieIndex = movieData.watchedMovies.findIndex(m => m.id === movie.id);
-  if (movieData.watchedMovies.indexOf('movie-id') === -1) {
-    movieData.watchedMovies.push('movie-id');
+function onClickWatched(event) {
+  // console.log(event.target);
+  const movieInfo = {
+    id: `${event.target.dataset.id}`,
+    overview: `${event.target.dataset.overview}`,
+    info: `${event.target.dataset.toparse}`,
+  };
+  // console.log(movieInfo);
+  // const movieInfoInfoObject = JSON.parse(movieInfo.info);
+  // console.log(movieInfoInfoObject);
+  const stringedMovieInfo = JSON.stringify(movieInfo);
+  if (movieData.watchedMovies.indexOf(stringedMovieInfo) === -1) {
+    movieData.watchedMovies.push(stringedMovieInfo);
   } else {
     Notiflix.Notify.failure('You already added this movie to watchlist');
   }
-  // removeFromQueue(movie);
-  removeFromQueue();
+  removeFromQueue(stringedMovieInfo);
   saveData(movieData);
 }
 
-function onClickQueue() {
-  // const movieIndex = movieData.queueMovies.findIndex(m => m.id === movie.id);
-  if (movieData.queueMovies.indexOf('movie-id') === -1) {
-    movieData.queueMovies.push('movie-id');
+function onClickQueue(event) {
+  const movieInfo = {
+    id: `${event.target.dataset.id}`,
+    overview: `${event.target.dataset.overview}`,
+    info: `${event.target.dataset.toparse}`,
+  };
+  const stringedMovieInfo = JSON.stringify(movieInfo);
+  if (movieData.queueMovies.indexOf(stringedMovieInfo) === -1) {
+    movieData.queueMovies.push(stringedMovieInfo);
   } else {
     Notiflix.Notify.failure('You already added this movie to queue');
   }
-  // removeFromWatched(movie);
-  removeFromWatched();
+
+  removeFromWatched(stringedMovieInfo);
   saveData(movieData);
 }
 
-// function removeFromWatched(movie) {
-//   const movieIndex = movieData.watchedMovies.findIndex(m => m.id === movie.id);
-//   movieData.watchedMovies.splice(movieIndex, 1);
-// }
-
-// function removeFromQueue(movie) {
-//   const movieIndex = movieData.queueMovies.findIndex(m => m.id === movie.id);
-//   movieData.queueMovies.splice(movieIndex, 1);
-// }
-
-function removeFromWatched() {
-  const movieIndex = movieData.watchedMovies.findIndex(m => m === 'movie-id');
-  movieData.watchedMovies.splice(movieIndex, 1);
+function removeFromWatched(thisMovie) {
+  const movieIndex = movieData.watchedMovies.findIndex(m => m === thisMovie);
+  if (movieIndex !== -1) {
+    movieData.watchedMovies.splice(movieIndex, 1);
+  }
 }
 
-function removeFromQueue() {
-  const movieIndex = movieData.queueMovies.findIndex(m => m === 'movie-id');
-  movieData.queueMovies.splice(movieIndex, 1);
+function removeFromQueue(thisMovie) {
+  const movieIndex = movieData.queueMovies.findIndex(m => m === thisMovie);
+  if (movieIndex !== -1) {
+    movieData.queueMovies.splice(movieIndex, 1);
+  }
+}
+
+try {
+  const parsedData = JSON.parse(localStorage.getItem('data-movies'));
+  if (parsedData.watchedMovies != [] || parsedData.queueMovies != []) {
+    movieData.watchedMovies = parsedData.watchedMovies;
+    movieData.queueMovies = parsedData.queueMovies;
+  }
+  console.log(parsedData);
+} catch (error) {
+  console.log('parsedData error: ' + error);
 }
