@@ -7,6 +7,11 @@ import {} from './search.js';
 import {} from './trending.js';
 import {} from './movie-modal.js';
 import {} from './goit-modal.js';
+//<<<<<<< HEAD
 import { } from './goit-modal-gallery.js';
 import { } from './add-to.js';
 import { } from './watched-queue.js';
+//=======
+import {} from './goit-modal-gallery.js';
+import {} from './add-to.js';
+//>>>>>>> main

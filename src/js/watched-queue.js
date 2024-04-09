@@ -1,12 +1,12 @@
 // WATCHED & QUEUE -----------------------------
+//Sprawdzenie obejrzanych i zakolejkowanych filmów
+let watchedMovies = JSON.parse(localStorage.getItem("watched-movies"));
+let queuedMovies = JSON.parse(localStorage.getItem("queued-movies"));
 
-let dataMovies = JSON.parse(localStorage.getItem("data-movies"));
-console.log(dataMovies.watchedMovies);
+const watchedMoviesContainerEl = document.querySelector("#library-watched");
+const queuedMoviesContainerEl = document.querySelector("#library-queued");
 
-const watchedMoviesContainerEl = document.querySelector("#watched-library");
-const queuedMoviesContainerEl = document.querySelector("#queued-library");
-
-if (dataMovies.watchedMovies && Array.isArray(dataMovies.watchedMovies)) {
+if (watchedMovies && Array.isArray(watchedMovies)) {
   const showWatchedMovies = movies => {
     movies.forEach(movie => {
       const card = document.createElement("div");
@@ -22,11 +22,15 @@ if (dataMovies.watchedMovies && Array.isArray(dataMovies.watchedMovies)) {
         </div>
       </div>
     `;
+      card.addEventListener("click", async () => {
+        modalBoxShow(movie);
+        await getTrailerLink(movie.id);
+      });
       watchedMoviesContainerEl.appendChild(card);
       watchedMoviesContainerEl.classList.remove("hiddenColor");
     });
   };
-  showWatchedMovies(dataMovies.watchedMovies);
+  showWatchedMovies(watchedMovies);
 } else {
   const noWatchedMovies = document.createElement("div");
   noWatchedMovies.innerHTML = `
@@ -36,7 +40,7 @@ if (dataMovies.watchedMovies && Array.isArray(dataMovies.watchedMovies)) {
   watchedMoviesContainerEl.appendChild(noWatchedMovies);
 }
 
-if (dataMovies.queuedMovies && Array.isArray(dataMovies.queuedMovies)) {
+if (queuedMovies && Array.isArray(queuedMovies)) {
   const showQueuedMovies = movies => {
     movies.forEach(movie => {
       const card = document.createElement("div");
@@ -52,11 +56,15 @@ if (dataMovies.queuedMovies && Array.isArray(dataMovies.queuedMovies)) {
         </div>
       </div>
     `;
+      card.addEventListener("click", async () => {
+        modalBoxShow(movie);
+        await getTrailerLink(movie.id);
+      });
       queuedMoviesContainerEl.appendChild(card);
       queuedMoviesContainerEl.classList.remove("hiddenColor");
     });
   };
-  showQueuedMovies(dataMovies.queuedMovies);
+  showQueuedMovies(queuedMovies);
 } else {
   const noQueuedMovies = document.createElement("div");
   noQueuedMovies.innerHTML = `
@@ -68,13 +76,18 @@ if (dataMovies.queuedMovies && Array.isArray(dataMovies.queuedMovies)) {
 
 const watchedBtnEl = document.querySelector("#button-watched");
 const queueBtnEl = document.querySelector("#button-queue");
+const watchedDivEl = document.querySelector("#library-watched");
+const queuedDivEl = document.querySelector("#library-queued");
+const libraryInfoEl = document.querySelector("#library-info");
 
-
- queueBtnEl.addEventListener("click", () => { 
-   watchedMoviesContainerEl.style.display = 'none';
-   queuedMoviesContainerEl.style.display = 'block';
-});
 watchedBtnEl.addEventListener("click", () => {
-  watchedMoviesContainerEl.style.display ='block';
-  queuedMoviesContainerEl.style.display = 'none';
+  watchedDivEl.classList.remove("hidden-in-library");
+  queuedDivEl.classList.add("hidden-in-library");
+  libraryInfoEl.classList.add("hidden-in-library");
+});
+
+queueBtnEl.addEventListener("click", () => { 
+  watchedDivEl.classList.add("hidden-in-library");
+  queuedDivEl.classList.remove("hidden-in-library");
+  libraryInfoEl.classList.add("hidden-in-library");
 });
